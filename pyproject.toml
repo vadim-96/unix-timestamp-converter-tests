@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "unix-timestamp-converter-tests"
+version = "0.1.0"
+description = "API tests for unix-timestamp-converter site"
+authors = ["Mazhitov Vadim <mazhitov.vadim@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^7.2.0"
+assertpy = "^1.1"
+requests-toolbelt = "^0.10.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
+flake8 = "^6.0.0"
+flake8-pytest-style = "^1.6.0"
+flake8-isort = "^6.0.0"
+isort = "^5.11.4"
+flake8-pyproject = "^1.2.2"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py", "*_tests.py", "*_suite.py"]
+python_classes = ["Test*", "*Test*", "*Test", "*Tests", "*Suite"]
+python_functions = ["test_*", "*_test"]
+disable_test_id_escaping_and_forfeit_all_rights_to_community_support = true
+
+[tool.flake8]
+exclude = [".git","__pycache__",".pytest_cache",".mypy_cache","build","dist"]
+per-file-ignores = ["__init__.py:F401"]
+max-line-length = 120
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.pyright]
+ignore = ["**/__init__.py", "**/.venv", "**/__pycache__"]
+reportMissingTypeStubs = false
+reportUnknownMemberType = false
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
